@@ -105,3 +105,65 @@ func CpuEffect(cpuCore float64, validCore int) error {
 
 	return nil
 }
+
+func DiskEffect(name string, diskSize string, bufferSize string) error {
+	// 初始化
+	fmt.Printf("\nDisk:\n")
+	start := time.Now()
+
+	// 计算字节数
+	dsize, err := CalcByteNumber(diskSize)
+	if err != nil {
+		return err
+	}
+	bsize, err := CalcByteNumber(bufferSize)
+	if err != nil {
+		return nil
+	}
+
+	// 计算分块数量和剩余字节数
+	chunk := dsize / bsize
+	fsize := dsize % bsize
+
+	// 打开文件
+	f, err := os.OpenFile(name, os.O_RDWR|os.O_CREATE|os.O_TRUNC, os.ModePerm)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+
+	// 分块写入数据
+	for i := 0; i < chunk; i++ {
+		buffer := make([]byte, bsize)
+		_, err = f.Write(buffer)
+		if err != nil {
+			return err
+		}
+		seconds := time.Since(start).Seconds()
+		percent := float64(bsize*(i+1)) / float64(dsize) * 100.0
+		fmt.Printf("  Allocated: %d/%d bytes, Take time: %.1f second, Completed: %.1f%%\r",
+			bsize*(i+1),
+			dsize,
+			seconds,
+			percent,
+		)
+	}
+
+	// 写入剩余数据
+	if fsize > 0 {
+		buffer := make([]byte, fsize)
+		_, err = f.Write(buffer)
+		if err != nil {
+			return err
+		}
+		seconds := time.Since(start).Seconds()
+		fmt.Printf("  Allocated: %d/%d bytes, Take time: %.1f second, Completed: %.1f%%\r",
+			dsize,
+			dsize,
+			seconds,
+			100.0,
+		)
+	}
+
+	return nil
+}
