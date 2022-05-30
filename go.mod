@@ -1,4 +1,4 @@
-module github.com/VVFock3r/effect
+module github.com/vvfock3r/effect
 
 go 1.18
 
