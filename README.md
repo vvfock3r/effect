@@ -4,6 +4,24 @@ Effect是一个用于自定义系统资源利用率的工具，编写这个工�
 
 
 
+## Install
+
+Go：requires Go 1.18 or later
+
+```bash
+go install github.com/vvfock3r/effect@latest
+```
+
+> 原理：
+>
+> （1）下载代码到`GOPATH/pkg/mod/github.com/vvfock3r/`目录下
+>
+> （2）并编译代码，将二进制文件到`GOPATH/bin`目录下
+>
+> （3）查看GOPATH目录方法：`go env GOPATH`
+
+
+
 ## Usage
 
 ```bash
