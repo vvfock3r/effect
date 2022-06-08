@@ -1,7 +1,6 @@
-# Effect
+# effect [![Go Report Card](https://goreportcard.com/badge/github.com/vvfock3r/effect)](https://goreportcard.com/report/github.com/vvfock3r/effect)
 
 Effect是一个用于自定义系统资源利用率的工具，编写这个工具的目的在于学习Go、Linux、Docker
-
 
 
 ## Install
