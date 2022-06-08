@@ -57,11 +57,11 @@ Example:
 
 （1）向系统申请`2G`内存（默认每次申请`1024kb`）
 
-![image-20220529131502995](https://tuchuang-1257805459.cos.ap-shanghai.myqcloud.com/image-20220529131502995.png)
+![image-20220529131502995](https://tuchuang-1257805459.cos.accelerate.myqcloud.com//image-20220529131502995.png)
 
 （2）向系统申请`2G`内存，每次申请`4kb`（可以看到速度有明显下降）
 
-![image-20220529131739126](https://tuchuang-1257805459.cos.ap-shanghai.myqcloud.com/image-20220529131739126.png)
+![image-20220529131739126](https://tuchuang-1257805459.cos.accelerate.myqcloud.com//image-20220529131739126.png)
 
 ### CPU
 
@@ -73,11 +73,11 @@ Example:
 
 （1）申请1.5核的CPU（默认会平均分布到各个核心上）
 
-![image-20220529132309015](https://tuchuang-1257805459.cos.ap-shanghai.myqcloud.com/image-20220529132309015.png)
+![image-20220529132309015](https://tuchuang-1257805459.cos.accelerate.myqcloud.com//image-20220529132309015.png)
 
 （2）申请1.5核的CPU（仅分布在两个核心上）
 
-![image-20220529132550375](https://tuchuang-1257805459.cos.ap-shanghai.myqcloud.com/image-20220529132550375.png)
+![image-20220529132550375](https://tuchuang-1257805459.cos.accelerate.myqcloud.com//image-20220529132550375.png)
 
 
 
