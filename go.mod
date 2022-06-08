@@ -2,7 +2,7 @@ module github.com/vvfock3r/effect
 
 go 1.18
 
-require github.com/shirou/gopsutil/v3 v3.22.4
+require github.com/shirou/gopsutil/v3 v3.22.5
 
 require (
 	github.com/go-ole/go-ole v1.2.6 // indirect

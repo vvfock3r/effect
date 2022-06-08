@@ -99,7 +99,7 @@ func (c *Cgroup) Delete(subname string) error {
 
 // 删除所有条目, 忽略错误
 func (c *Cgroup) Clean() {
-	for subname, _ := range c.m {
+	for subname := range c.m {
 		_ = c.Delete(subname)
 	}
 }

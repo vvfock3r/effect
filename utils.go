@@ -58,7 +58,7 @@ func GetThreadIds(pid int32) (tids []int32, err error) {
 	}
 
 	// 提取所有线程ID
-	for id, _ := range threads {
+	for id := range threads {
 		tids = append(tids, id)
 	}
 
