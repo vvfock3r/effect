@@ -1,11 +1,17 @@
 # effect [![PkgGoDev](https://pkg.go.dev/badge/github.com/vvfock3r/effect)](https://pkg.go.dev/github.com/vvfock3r/effect) [![Go Report Card](https://goreportcard.com/badge/github.com/vvfock3r/effect)](https://goreportcard.com/report/github.com/vvfock3r/effect)
 
-Effect是一个用于自定义系统资源利用率的工具，编写这个工具的目的在于学习Go、Linux、Docker
-
+Effect是一个用于自定义系统资源利用率的工具，用于学习Go、Linux、Docker
 
 ## Install
 
-Go：requires Go 1.18 or later
+方式一：下载二进制文件
+
+```bash
+```
+
+
+
+方式二：使用go命令安装（`requires Go 1.18 or later`）
 
 ```bash
 go install github.com/vvfock3r/effect@latest
@@ -34,9 +40,15 @@ OPTIONS:
   -cpu float
         CPU utilization
   -cpu-spread int
-        Number of CPU propagation (default 4)
+        Number of CPU propagation (default 2)
+  -disk string
+        Allocat disk size
+  -disk-buffer string
+        Buffer size when writing file (default "1024kb")
+  -disk-file string
+        File name (default "effect.test.data")
   -memory string
-        Allocated memory size
+        Allocat memory size
   -memory-stride string
         Memory increase stride (default "1024kb")
 
@@ -46,7 +58,7 @@ Example:
 
 ### Memory
 
-注意事项：
+原理和注意事项：
 
 * 直接向系统申请内存，所以此功能支持Windows、Linux等
 * 程序目前无法区分交换分区和物理内存，所以这里是包含物理内存和交换分区的，在测试时最好将交换分区关掉，以便能更好的观测到结果
@@ -65,7 +77,7 @@ Example:
 
 ### CPU
 
-注意事项：
+原理和注意事项：
 
 * 程序内部会将CPU跑满，然后再通过Linux Cgroup来限制CPU使用率，所以该功能不支持Windows
 
@@ -81,14 +93,22 @@ Example:
 
 
 
+### Disk
 
+原理和注意事项：
 
-## ToDo
+* 直接向文件系统写入数据，所以此功能支持Windows、Linux等
 
-* 添加磁盘使用率
-* 增加百分比数据格式
-* 增加平均负载使用率
-  * CPU引起负载升高
-  * 短时应用引起负载升高（top中是看不到进程名的）
-  * IO等待引起负载升高
-* other ...
+（1）申请2g文件
+
+```bash
+[root@localhost ~]# ./effect --disk 2g --disk-file /tmp/test
+
+Disk:
+  Allocated: 2147483648/2147483648 bytes, Take time: 3.1 second, Completed: 100.0%
+Press <Ctrl-C> to quit.
+
+[root@localhost ~]# ls -lh /tmp/test
+-rwxr-xr-x 1 root root 2.0G Jul 13 06:19 /tmp/test
+```
+
