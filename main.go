@@ -10,6 +10,9 @@ import (
 )
 
 var (
+	versionFlag   bool
+	versionString string = "v0.0.1"
+
 	memory       string // 总共申请内存大小
 	memoryStride string // 每次申请内存大小
 
@@ -22,6 +25,8 @@ var (
 )
 
 func init() {
+	flag.BoolVar(&versionFlag, "v", false, "Show version")
+
 	// 绑定内存参数
 	flag.StringVar(&memory, "memory", "", "Allocat memory size")
 	flag.StringVar(&memoryStride, "memory-stride", "1024kb", "Memory increase stride")
@@ -68,6 +73,12 @@ func main() {
 	if len(flag.Args()) >= 1 {
 		flag.Usage()
 		os.Exit(2)
+	}
+
+	// 查看版本
+	if versionFlag {
+		fmt.Println(versionString)
+		os.Exit(0)
 	}
 
 	// 内存
