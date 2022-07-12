@@ -7,6 +7,8 @@ Effect是一个用于自定义系统资源利用率的工具，用于学习Go、
 方式一：下载二进制文件
 
 ```bash
+[root@localhost ~]# wget https://github.com/vvfock3r/effect/releases/download/v0.0.1/effect-v0.0.1-linux-amd64 -O /usr/local/bin/effect
+[root@localhost ~]# chmod 755 /usr/local/bin/effect
 ```
 
 
@@ -14,14 +16,14 @@ Effect是一个用于自定义系统资源利用率的工具，用于学习Go、
 方式二：使用go命令安装（`requires Go 1.18 or later`）
 
 ```bash
-go install github.com/vvfock3r/effect@latest
+[root@localhost ~]# go install github.com/vvfock3r/effect@latest
 ```
 
 > 原理：
 >
 > （1）下载代码到`GOPATH/pkg/mod/github.com/vvfock3r/`目录下
 >
-> （2）并编译代码，将二进制文件到`GOPATH/bin`目录下
+> （2）编译代码，并将二进制文件到`GOPATH/bin`目录下
 >
 > （3）查看GOPATH目录方法：`go env GOPATH`
 
