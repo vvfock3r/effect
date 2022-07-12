@@ -54,6 +54,7 @@ OPTIONS:
         Allocat memory size
   -memory-stride string
         Memory increase stride (default "1024kb")
+  -v    Show version
 
 Example:
   ./effect --memory 2g --cpu 1.5
